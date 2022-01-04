@@ -1,11 +1,9 @@
+import { Injectable } from '@nestjs/common';
 import { MessagesRepository } from './message.repository';
 
+@Injectable()
 export class MessageService {
-  messageRepo: MessagesRepository;
-
-  constructor() {
-    this.messageRepo = new MessagesRepository();
-  }
+  constructor(public messageRepo: MessagesRepository) {}
 
   findOne(id: string) {
     return this.messageRepo.findOne(id);
